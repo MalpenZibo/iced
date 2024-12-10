@@ -468,10 +468,10 @@ pub fn mouse_interaction(
         Interaction::None | Interaction::Idle => {
             winit::window::CursorIcon::Default
         }
-        Interaction::Pointer => winit::window::CursorIcon::Pointer,
+        Interaction::Pointer => winit::window::CursorIcon::Default,
         Interaction::Working => winit::window::CursorIcon::Progress,
-        Interaction::Grab => winit::window::CursorIcon::Grab,
-        Interaction::Grabbing => winit::window::CursorIcon::Grabbing,
+        Interaction::Grab => winit::window::CursorIcon::Default,
+        Interaction::Grabbing => winit::window::CursorIcon::Default,
         Interaction::Crosshair => winit::window::CursorIcon::Crosshair,
         Interaction::Text => winit::window::CursorIcon::Text,
         Interaction::ResizingHorizontally => {
