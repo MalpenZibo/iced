@@ -94,6 +94,7 @@ where
                 conversion::cursor_position(
                     cursor_position,
                     self.viewport.scale_factor(),
+                    self.scale_factor,
                 )
             })
             .map(mouse::Cursor::Available)

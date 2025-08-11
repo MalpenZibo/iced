@@ -54,7 +54,10 @@ pub fn main() -> Result<(), winit::error::EventLoopError> {
     }
 
     impl winit::application::ApplicationHandler for Runner {
-        fn resumed(&mut self, event_loop: &dyn winit::event_loop::ActiveEventLoop) {
+        fn resumed(
+            &mut self,
+            event_loop: &dyn winit::event_loop::ActiveEventLoop,
+        ) {
             if let Self::Loading = self {
                 let window = Arc::new(
                     event_loop
@@ -336,6 +339,7 @@ pub fn main() -> Result<(), winit::error::EventLoopError> {
                             conversion::cursor_position(
                                 p,
                                 viewport.scale_factor(),
+                                self.scale_factor(),
                             )
                         })
                         .map(mouse::Cursor::Available)

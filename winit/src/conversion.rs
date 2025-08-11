@@ -534,8 +534,9 @@ pub fn modifiers(
 pub fn cursor_position(
     position: winit::dpi::PhysicalPosition<f64>,
     scale_factor: f64,
+    app_scale_factor: f64,
 ) -> Point {
-    let logical_position = position.to_logical(scale_factor);
+    let logical_position = position.to_logical(scale_factor * app_scale_factor);
 
     Point::new(logical_position.x, logical_position.y)
 }
