@@ -1249,11 +1249,19 @@ async fn run_instance<'a, P, C>(
                             continue;
                         };
 
+                        const DIFF_SIZE_CHECK: f32 = 0.5;
+                        let scaled_window_size = window.state.logical_size()
+                            * window.state.app_scale_factor() as f32;
+                        let size_diff = window.size() - scaled_window_size;
+                        let size_changed = size_diff.width.abs()
+                            > DIFF_SIZE_CHECK
+                            || size_diff.height.abs() > DIFF_SIZE_CHECK;
+
                         // XX must force update to corner radius before the surface is committed.
                         #[cfg(feature = "wayland")]
                         if window.viewport_version
                             != window.state.viewport_version()
-                            || window.size() != window.state.logical_size()
+                            || size_changed
                         {
                             platform_specific_handler.send_wayland(
                                 platform_specific::Action::ResizeWindow(id),
