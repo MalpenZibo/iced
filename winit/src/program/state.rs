@@ -103,6 +103,11 @@ where
         self.viewport.scale_factor()
     }
 
+    /// Returns the current scale factor of the [`App`] of the [`State`].
+    pub fn app_scale_factor(&self) -> f64 {
+        self.scale_factor
+    }
+
     pub fn set_logical_cursor_pos(&mut self, pos: LogicalPosition<f64>) {
         let physical = pos.to_physical(self.scale_factor());
         self.cursor_position = Some(physical);
