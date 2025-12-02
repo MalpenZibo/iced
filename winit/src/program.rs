@@ -47,6 +47,7 @@ use winit::raw_window_handle::HasWindowHandle;
 
 pub(crate) use window_manager::WindowManager;
 
+use log::trace;
 use rustc_hash::FxHashMap;
 use std::any::Any;
 use std::borrow::Cow;
@@ -55,7 +56,6 @@ use std::mem::ManuallyDrop;
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::time::Duration;
-use log::trace;
 
 /// An interactive, native, cross-platform, multi-windowed application.
 ///
@@ -1249,13 +1249,19 @@ async fn run_instance<'a, P, C>(
                             continue;
                         };
 
+                        let mut scaled_window_size =
+                            window.state.logical_size()
+                                * window.state.app_scale_factor() as f32;
+                        scaled_window_size.width =
+                            scaled_window_size.width.trunc();
+                        scaled_window_size.height =
+                            scaled_window_size.height.trunc();
+
                         // XX must force update to corner radius before the surface is committed.
                         #[cfg(feature = "wayland")]
                         if window.viewport_version
                             != window.state.viewport_version()
-                            || window.size()
-                                != window.state.logical_size()
-                                    * window.state.app_scale_factor() as f32
+                            || window.size() != scaled_window_size
                         {
                             platform_specific_handler.send_wayland(
                                 platform_specific::Action::ResizeWindow(id),
