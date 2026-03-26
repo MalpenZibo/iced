@@ -197,7 +197,7 @@ pulldown-cmark = "0.12"
 qrcode = { version = "0.13", default-features = false }
 raw-window-handle = "0.6"
 rustc-hash = "2.0"
-cctk = { git = "https://github.com/pop-os/cosmic-protocols", package = "cosmic-client-toolkit", rev = "d0e95be" }
+cctk = { git = "https://github.com/MalpenZibo/cosmic-protocols", package = "cosmic-client-toolkit", branch = "develop" }
 smol = "1.0"
 smol_str = "0.2"
 softbuffer = { git = "https://github.com/pop-os/softbuffer", tag = "cosmic-4.0" }
@@ -262,3 +262,4 @@ broken_intra_doc_links = "forbid"
 # [patch."https://github.com/rust-windowing/winit.git"]
 # winit = { git = "https://github.com/rust-windowing/winit.git", rev = "241b7a80bba96c91fa3901729cd5dec66abb9be4" }
 # winit = { path = "../../../winit" }
+
