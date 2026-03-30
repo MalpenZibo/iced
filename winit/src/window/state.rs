@@ -107,7 +107,8 @@ where
     }
 
     pub fn set_logical_cursor_pos(&mut self, pos: LogicalPosition<f64>) {
-        let physical = pos.to_physical(self.scale_factor());
+        let window_scale = self.viewport.scale_factor() / self.scale_factor;
+        let physical = pos.to_physical(window_scale);
         self.cursor_position = Some(physical);
     }
 
