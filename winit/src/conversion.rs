@@ -610,7 +610,7 @@ pub fn mouse_interaction(
         }
         Interaction::ContextMenu => winit_core::cursor::CursorIcon::ContextMenu,
         Interaction::Help => winit_core::cursor::CursorIcon::Help,
-        Interaction::Pointer => winit_core::cursor::CursorIcon::Pointer,
+        Interaction::Pointer => winit_core::cursor::CursorIcon::Default,
         Interaction::Progress => winit_core::cursor::CursorIcon::Progress,
         Interaction::Wait => winit_core::cursor::CursorIcon::Wait,
         Interaction::Cell => winit_core::cursor::CursorIcon::Cell,
@@ -621,8 +621,8 @@ pub fn mouse_interaction(
         Interaction::Move => winit_core::cursor::CursorIcon::Move,
         Interaction::NoDrop => winit_core::cursor::CursorIcon::NoDrop,
         Interaction::NotAllowed => winit_core::cursor::CursorIcon::NotAllowed,
-        Interaction::Grab => winit_core::cursor::CursorIcon::Grab,
-        Interaction::Grabbing => winit_core::cursor::CursorIcon::Grabbing,
+        Interaction::Grab => winit_core::cursor::CursorIcon::Default,
+        Interaction::Grabbing => winit_core::cursor::CursorIcon::Default,
         Interaction::ResizingHorizontally => {
             winit_core::cursor::CursorIcon::EwResize
         }
